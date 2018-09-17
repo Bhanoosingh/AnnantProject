@@ -13,7 +13,13 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.models.Authorities;
+import com.niit.models.BillingAddress;
+import com.niit.models.Category;
+import com.niit.models.Customer;
 import com.niit.models.Product;
+import com.niit.models.ShippingAddress;
+import com.niit.models.User;
 
 @Configuration
 @ComponentScan(basePackages= {"com.niit"})
@@ -36,6 +42,7 @@ public class DBConfiguration {
 	 * <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBuilder">
 	 * <property name="dataSource" ref="dataSource">
 	 */
+	@SuppressWarnings("rawtypes")
 	@Bean //SessionFactory - factory of session objects
 	public SessionFactory sessionFactory() {
 		System.out.println("Entering sessionFactory creation method");
@@ -49,7 +56,7 @@ public class DBConfiguration {
 		lsf.addProperties(hibernateProperties);
 		//An array of Class objects of all the entities
 		//Map all entities to relational table
-		Class classes[]=new Class[]{Product.class}; //If product class is not yet created, remove this and add it later
+		Class classes[]=new Class[]{Product.class,Category.class,User.class,Customer.class,Authorities.class,BillingAddress.class,ShippingAddress.class}; //If product class is not yet created, remove this and add it later
 		//localsesionfactorybuilder -> sessionfactory -> map all entities with relation table
 		System.out.println("SessionFactory bean " + lsf);
 	    return lsf.addAnnotatedClasses(classes).buildSessionFactory();

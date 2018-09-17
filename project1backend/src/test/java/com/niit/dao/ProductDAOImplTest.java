@@ -10,6 +10,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.niit.models.Product;
 
+@SuppressWarnings("unused")
 public class ProductDAOImplTest {
 	
 	private static AnnotationConfigApplicationContext context=null;
@@ -34,6 +35,11 @@ public class ProductDAOImplTest {
 		product.setPrice(56499);
 		product.setQuantity(22);
 		assertTrue("Fail to insert", productDao.saveProduct(product));
+	}
+
+	private void assertTrue(String message, Product saveProduct) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Test

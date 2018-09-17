@@ -14,6 +14,10 @@ private String productname;
 private String productdesc;
 private int quantity;
 private double price;
+//@ManyToOne
+//private Category category;
+
+
 public int getId() {
 	return id;
 }
